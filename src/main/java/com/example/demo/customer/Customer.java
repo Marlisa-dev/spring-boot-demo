@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 //Our Customer class
+
 public class Customer {
     private final Long id;
 

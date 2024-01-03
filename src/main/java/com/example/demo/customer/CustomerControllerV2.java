@@ -1,11 +1,10 @@
 package com.example.demo.customer;
 
+import exception.ApiRequestException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @RequestMapping(path = "api/v2/customers") // give api correct naming convention plus versioning
@@ -33,6 +32,13 @@ public class CustomerControllerV2 {
         return customerService.getCustomer(id);
     }
 
+    @GetMapping(path = "{customerId}/exception") //Testing the exception
+    Customer getCustomerException(@PathVariable("customerId") Long id) {
+        throw new ApiRequestException(
+                "aApiRequestException for customer " + id
+        );
+    }
+
     @PostMapping
     void createNewCustomer(@RequestBody @Valid Customer customer){
         //@RequestBody is to retrieve the json payload and map it into customer
@@ -51,6 +57,6 @@ public class CustomerControllerV2 {
     @DeleteMapping(path = "{customerId}")
     void deleteCustomer(@PathVariable("customerId") Long id) {
         System.out.println("DELETE REQUEST FOR CUSTOMER WITH ID " + id);
-//        System.out.println(customer);
+
     }
 }
