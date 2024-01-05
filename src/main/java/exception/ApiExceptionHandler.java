@@ -1,5 +1,7 @@
 package exception;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,6 +12,8 @@ import java.time.ZonedDateTime;
 //This class is how we handle more than one exception
 @ControllerAdvice //enables this class to work across the entire application
 public class ApiExceptionHandler {
+
+//    private static final Logger LOGGER = LoggerFactory.getLogger(ApiExceptionHandler.class);
 
     @ExceptionHandler (value = ApiRequestException.class) //This allows spring so its thing by handling this exception. Import above.
     //To handle multiple exceptions, use {} within the value

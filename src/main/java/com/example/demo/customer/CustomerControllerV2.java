@@ -45,6 +45,7 @@ public class CustomerControllerV2 {
         //@valid prevents you from posting bank data. from sprig validation dependency
         System.out.println("POST REQUEST...");
         System.out.println(customer);
+
     }
 
     @PutMapping
