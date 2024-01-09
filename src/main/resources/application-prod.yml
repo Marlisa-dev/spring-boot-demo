@@ -1,0 +1,43 @@
+include:
+    error:
+        include-stacktrace: on_trace_param
+info:
+    app:
+        description: Master Spring Boot
+        name: Spring Boot Master Class course
+        version: 1.0.0
+    developer:
+        name: Marlisa
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        jmx:
+            exposure:
+                include: health,info,env,beans
+        web:
+            exposure:
+                include: health,info,prometheus
+    info:
+        env:
+            enabled: true
+server:
+    error:
+        include-binding-errors: always
+        include-message: always
+spring:
+    datasource:
+        driverClassName: org.h2.Driver
+        password: hello
+        url: jdbc:h2:mem:testdb-dev-environment
+        username: hello
+    h2:
+        console:
+            enabled: true
+            path: /h2-dev
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        show-sql: true
+    main:
+        banner-mode: 'off'
